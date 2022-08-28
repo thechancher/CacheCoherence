@@ -1,0 +1,5 @@
+<h2>Clock</h2>
+<button (click)="togglePlay()" class="btn"
+    [ngClass]="clock.play?'btn-secondary' : 'btn-primary'">{{clock.action_btn}}</button>
+<h3>{{clock.state}}</h3>
+<button (click)="speed()" [disabled]="clock.play" class="btn btn-secondary">Change Speed</button>
