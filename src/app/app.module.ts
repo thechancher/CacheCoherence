@@ -9,11 +9,15 @@ import { ClockComponent } from './components/clock/clock.component';
 
 // services
 import { ClockService } from './services/clock.service';
+import { CPUComponent } from './components/cpu/cpu.component';
+import { MemoryComponent } from './components/memory/memory.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClockComponent
+    ClockComponent,
+    CPUComponent,
+    MemoryComponent
   ],
   imports: [
     BrowserModule,

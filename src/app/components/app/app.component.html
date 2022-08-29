@@ -1,2 +1,28 @@
-<h1>Hello CPU</h1>
-<app-clock></app-clock>
+<div id="outer">
+    <div class="" id="fixed-height">
+        <div class="bg-primary" id="sky">
+            <h1>{{title}}</h1>
+        </div>
+
+        <div class="bg-info">
+            <app-clock></app-clock>
+        </div>
+
+        <div class="container" id="cpus">
+            <div class="row align-items-center">
+                <div class="border border-secondary rounded-4 col-md-3"
+                    *ngFor="let cpu of counter(CPUs); let i = index">
+                    <app-cpu [CPU]="i"></app-cpu>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-success" id="memory">
+            <app-memory></app-memory>
+        </div>
+    </div>
+
+    <div class="bg-secondary" id="remaining-height">
+        <!-- <p>=P</p> -->
+    </div>
+</div>
