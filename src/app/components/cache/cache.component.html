@@ -1,0 +1,46 @@
+<p class="h6 ms-2">Cache</p>
+<ul class="list-group list-group-flush mb-3">
+    <li class="list-group-item pt-0">
+        <div class="row" id="console-title">
+            <div class="col-3 p-0">
+                <span class="badge bg-success">Slot</span>
+            </div>
+            <div class="col-3 p-0">
+                <span class="badge bg-success">Sta.</span>
+            </div>
+            <div class="col-3 p-0">
+                <span class="badge bg-success">Dir.</span>
+            </div>
+            <div class="col-3 p-0">
+                <span class="badge bg-success">Dat.</span>
+            </div>
+        </div>
+    </li>
+    <li class="list-group-item" *ngFor="let slot of slots; last as isLast">
+        <div class="row">
+            <div class="col-3">
+                <div>
+                    <p class="m-0" id="console"><span class="">{{slot.slot}}</span></p>
+                </div>
+            </div>
+            <div class="col-3">
+                <div *ngIf="slot.state == ''">
+                    <p class="m-0" id="console"><span class="">...</span></p>
+                </div>
+                <div *ngIf="slot.state">
+                    <p class="m-0" id="console"><span class="">{{slot.state}}</span></p>
+                </div>
+            </div>
+            <div class="col-3">
+                <div>
+                    <p class="m-0" id="console"><span class="">{{slot.direction}}</span></p>
+                </div>
+            </div>
+            <div class="col-3">
+                <div>
+                    <p class="m-0" id="console"><span class="">{{slot.data}}</span></p>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>

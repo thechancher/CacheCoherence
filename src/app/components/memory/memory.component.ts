@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MemSlot } from 'src/app/models/mem-slot';
+import { ClockService } from 'src/app/services/clock.service';
 
 @Component({
   selector: 'app-memory',
@@ -8,11 +9,9 @@ import { MemSlot } from 'src/app/models/mem-slot';
 })
 export class MemoryComponent implements OnInit {
 
-  private block_size: number = 16;
-  private mem_size: number = 8;
-  public slots: MemSlot[] = new Array<MemSlot>(this.mem_size);
+  public slots: MemSlot[] = new Array<MemSlot>(this.clockService.mem_size);
 
-  constructor() { }
+  constructor(public clockService: ClockService) { }
 
   ngOnInit(): void {
     this.buildSlots();
@@ -22,20 +21,20 @@ export class MemoryComponent implements OnInit {
    * build the empty slots
    */
   private buildSlots(): void {
-    var block_bus_size: number = Math.ceil(Math.log2(this.block_size))
-    var data: string = "0".repeat(block_bus_size)
+    var data_bus_size: number = Math.ceil(Math.log2(this.clockService.data_size))
+    var data: string = "0".repeat(data_bus_size)
 
-    var mem_bus_size: number = Math.ceil(Math.log2(this.mem_size))
-    var bus: string = "0".repeat(mem_bus_size)
+    var mem_bus_size: number = Math.ceil(Math.log2(this.clockService.mem_size))
+    var mem_bus: string = "0".repeat(mem_bus_size)
 
     var binary: string = "";
     var slicer: number = 0;
 
-    for (let i = 0; i < this.mem_size; i++) {
+    for (let i = 0; i < this.clockService.mem_size; i++) {
       binary = i.toString(2);
       slicer = binary.length
-      bus = bus.slice(0, -1 * slicer) + binary
-      this.slots[i] = { direction: bus, data: data }
+      mem_bus = mem_bus.slice(0, -1 * slicer) + binary
+      this.slots[i] = { direction: mem_bus, data: data }
     }
   }
 

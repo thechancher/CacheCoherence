@@ -11,13 +11,15 @@ import { ClockComponent } from './components/clock/clock.component';
 import { ClockService } from './services/clock.service';
 import { CPUComponent } from './components/cpu/cpu.component';
 import { MemoryComponent } from './components/memory/memory.component';
+import { CacheComponent } from './components/cache/cache.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClockComponent,
     CPUComponent,
-    MemoryComponent
+    MemoryComponent,
+    CacheComponent
   ],
   imports: [
     BrowserModule,

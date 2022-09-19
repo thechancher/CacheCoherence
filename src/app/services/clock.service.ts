@@ -20,6 +20,11 @@ export class ClockService {
 
   public instructions_history: number = 4;
 
+  public cache_size: number = 4;
+  public mem_size: number = 8;
+
+  public data_size: number = 16;
+
   private static min: number = 0;
   private static max: number = 2;
 
