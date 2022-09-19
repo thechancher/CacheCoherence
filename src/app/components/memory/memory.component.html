@@ -1,1 +1,25 @@
-<p>memory works!</p>
+<div class="border border-secondary rounded-4">
+    <h6 class="border border-secondary rounded-4 bg-secondary m-1 text-center">Memory</h6>
+    <ul class="list-group list-group-flush mb-3">
+        <li class="list-group-item pt-0">
+            <div class="row">
+                <div class="col-6">
+                    <span class="badge bg-success">Direction</span>
+                </div>
+                <div class="col-6">
+                    <span class="badge bg-success">Data</span>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item" *ngFor="let slot of slots">
+            <div class="row" id="console">
+                <div class="col-6">
+                    <div>{{slot.direction}}</div>
+                </div>
+                <div class="col-6">
+                    <div>{{slot.data}}</div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

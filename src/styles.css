@@ -1,3 +1,12 @@
+@font-face {
+    font-family: "CONSOLA";
+    src: url("./assets/fonts/CONSOLA.TTF") format("truetype");
+}
+
+#console {
+    font-family: 'CONSOLA';
+}
+
 html,
 body,
 #outer {
@@ -10,11 +19,11 @@ body,
     display: table;
 }
 
-#fixed-height {
+#fixed {
     /* height: 50px; */
     display: table-row;
 }
 
-#remaining-height {
+#remaining {
     display: table-row;
 }

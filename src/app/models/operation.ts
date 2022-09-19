@@ -6,6 +6,6 @@ export interface Operation {
 
 export var operations: Operation[] = [
     { operation: "calc", data: "", direction: "" },
-    { operation: "read", data: "xyz", direction: "1111" },
-    { operation: "write", data: "abc", direction: "0000" }
+    { operation: "read", data: "wxyz", direction: "1111" },
+    { operation: "write", data: "abcd", direction: "0000" }
 ];

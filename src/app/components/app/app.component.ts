@@ -9,12 +9,13 @@ import { ClockService } from 'src/app/services/clock.service';
 export class AppComponent {
   title = 'Cache Coherence Simulator v1.0';
 
-  public CPUs: number = 0;
+  constructor(public clock: ClockService) { }
 
-  constructor(private clock: ClockService) {
-    this.CPUs = this.clock.CPUs;
-  }
-
+  /**
+   * used to build an array for the loop
+   * @param i number of iterations
+   * @returns the array
+   */
   public counter(i: number): Array<number> {
     return new Array(i);
   }

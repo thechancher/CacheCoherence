@@ -14,11 +14,17 @@ export class ClockComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  togglePlay() {
+  /**
+   * toggle the running state
+   */
+  public togglePlay(): void {
     this.clock.play_pause_btn();
   }
 
-  speed() {
+  /**
+   * change the running speed
+   */
+  public speed(): void {
     this.clock.changeSpeed(this.clock.period / 2);
   }
 

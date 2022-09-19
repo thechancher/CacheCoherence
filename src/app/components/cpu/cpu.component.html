@@ -1,36 +1,56 @@
-<h6 class="border border-secondary rounded-4 bg-secondary p-1 my-1 text-center">CPU {{CPU}}</h6>
-<p class="h6">Operations</p>
-<ul class="list-group list-group-flush">
-    <li class="list-group-item">
-        <div class="row">
-            <div class="col-4">
-                <div><span class="badge bg-success">Type</span></div>
+<div class="border border-secondary rounded-4">
+    <h6 class="border border-secondary rounded-4 bg-secondary m-1 text-center">CPU {{CPU}}</h6>
+    <p class="h6 ms-2">Operations</p>
+    <ul class="list-group list-group-flush mb-3">
+        <li class="list-group-item pt-0">
+            <div class="row">
+                <div class="col-4">
+                    <span class="badge bg-success">Type</span>
+                </div>
+                <div class="col-4">
+                    <span class="badge bg-success">Dir.</span>
+                </div>
+                <div class="col-4">
+                    <span class="badge bg-success">Data</span>
+                </div>
             </div>
-            <div class="col-4">
-                <div><span class="badge bg-success">Dir.</span></div>
+        </li>
+        <li class="list-group-item" *ngFor="let operation of operations; last as isLast">
+            <div class="row">
+                <div class="col-4">
+                    <div *ngIf="!operation">
+                        <p class="m-0" id="console"><span class="">...</span></p>
+                    </div>
+                    <div *ngIf="operation && !isLast">
+                        <p class="m-0" id="console"><span class="">{{operation.operation}}</span></p>
+                    </div>
+                    <div *ngIf="operation && isLast">
+                        <p class="m-0" id="console"><span class=""><strong>{{operation.operation}}</strong></span></p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div *ngIf="!operation">
+                        <p class="m-0" id="console"><span class="">...</span></p>
+                    </div>
+                    <div *ngIf="operation && !isLast">
+                        <p class="m-0" id="console"><span class="">{{operation.direction}}</span></p>
+                    </div>
+                    <div *ngIf="operation && isLast">
+                        <p class="m-0" id="console"><span class=""><strong>{{operation.direction}}</strong></span></p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div *ngIf="!operation">
+                        <p class="m-0" id="console"><span class="">...</span></p>
+                    </div>
+                    <div *ngIf="operation && !isLast">
+                        <p class="m-0" id="console"><span class="">{{operation.data}}</span></p>
+                    </div>
+                    <div *ngIf="operation && isLast">
+                        <p class="m-0" id="console"><span class=""><strong>{{operation.data}}</strong></span></p>
+                    </div>
+                </div>
             </div>
-            <div class="col-4">
-                <div><span class="badge bg-success">Data</span></div>
-            </div>
-        </div>
-    </li>
-    <li class="list-group-item" *ngFor="let operation of operations; last as isLast">
-        <div class="row">
-            <div class="col-4">
-                <div *ngIf="!operation">...</div>
-                <div *ngIf="operation && !isLast"><span class="badge bg-secondary">{{operation.operation}}</span></div>
-                <div *ngIf="operation && isLast"><span class="badge bg-dark">{{operation.operation}}</span></div>
-            </div>
-            <div class="col-4">
-                <div *ngIf="!operation">...</div>
-                <div *ngIf="operation && !isLast"><span class="badge bg-secondary">{{operation.direction}}</span></div>
-                <div *ngIf="operation && isLast"><span class="badge bg-dark">{{operation.direction}}</span></div>
-            </div>
-            <div class="col-4">
-                <div *ngIf="!operation">...</div>
-                <div *ngIf="operation && !isLast"><span class="badge bg-secondary">{{operation.data}}</span></div>
-                <div *ngIf="operation && isLast"><span class="badge bg-dark">{{operation.data}}</span></div>
-            </div>
-        </div>
-    </li>
-</ul>
+        </li>
+    </ul>
+</div>

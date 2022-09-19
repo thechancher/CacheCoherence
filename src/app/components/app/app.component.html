@@ -1,5 +1,5 @@
 <div id="outer">
-    <div class="" id="fixed-height">
+    <div class="" id="fixed">
         <div class="bg-primary" id="sky">
             <h1>{{title}}</h1>
         </div>
@@ -8,21 +8,24 @@
             <app-clock></app-clock>
         </div>
 
-        <div class="container" id="cpus">
+        <div class="mx-3" id="cpus">
             <div class="row align-items-center">
-                <div class="border border-secondary rounded-4 col-md-3"
-                    *ngFor="let cpu of counter(CPUs); let i = index">
+                <div class="col-md-3 p-1" *ngFor="let cpu of counter(clock.CPUs); let i = index">
                     <app-cpu [CPU]="i"></app-cpu>
                 </div>
             </div>
         </div>
 
-        <div class="bg-success" id="memory">
-            <app-memory></app-memory>
+        <div class="mx-3" id="memory">
+            <div class="row justify-content-center">
+                <div class="col-md-3 p-1">
+                    <app-memory></app-memory>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="bg-secondary" id="remaining-height">
+    <div class="bg-secondary" id="remaining">
         <!-- <p>=P</p> -->
     </div>
 </div>

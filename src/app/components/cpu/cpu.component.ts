@@ -9,10 +9,9 @@ import { ClockService } from 'src/app/services/clock.service';
 })
 export class CPUComponent implements OnInit {
 
-  @Input() CPU!: number;
+  @Input() CPU!: number; // CPU id
 
-  private history: number = 4;
-  public operations: Operation[] = new Array<Operation>(this.history);
+  public operations: Operation[] = new Array<Operation>(this.clockService.instructions_history);
 
   constructor(private clockService: ClockService) { }
 
@@ -24,7 +23,7 @@ export class CPUComponent implements OnInit {
         this.operations[i - 1] = this.operations[i];
       }
 
-      this.operations[this.history - 1] = operations[random[this.CPU]];
+      this.operations[this.clockService.instructions_history - 1] = operations[random[this.CPU]];
     });
   }
 }
