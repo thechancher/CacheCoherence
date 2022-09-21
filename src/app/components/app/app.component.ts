@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ClockService } from 'src/app/services/clock.service';
 import { SizesService } from 'src/app/services/sizes.service';
 
 @Component({

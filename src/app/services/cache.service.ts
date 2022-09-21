@@ -73,23 +73,132 @@ export class CacheService {
     // console.log("blocks: " + JSON.stringify(this.blockService.blocks_cache));
   }
 
-  public write(cpu: number, direction: string): void {
+  public writeFromMemory(cpu: number, direction: string): void {
+    console.log("from memory");
     switch (cpu) {
       case 0:
         BlockService.cache_0[0].direction = direction;
         BlockService.cache_0[0].data = BlockService.blocks_memory[parseInt(direction, 2)].data;
+        BlockService.cache_0[0].state = "exc"
         break;
       case 1:
         BlockService.cache_1[0].direction = direction;
         BlockService.cache_1[0].data = BlockService.blocks_memory[parseInt(direction, 2)].data;
+        BlockService.cache_1[0].state = "exc"
         break;
       case 2:
         BlockService.cache_2[0].direction = direction;
         BlockService.cache_2[0].data = BlockService.blocks_memory[parseInt(direction, 2)].data;
+        BlockService.cache_2[0].state = "exc"
         break;
       case 3:
         BlockService.cache_3[0].direction = direction;
         BlockService.cache_3[0].data = BlockService.blocks_memory[parseInt(direction, 2)].data;
+        BlockService.cache_3[0].state = "exc"
+        break;
+      default:
+        break;
+    }
+  }
+
+  public writeFromCache(from: number, slot: number, to: number): void {
+    console.log("from cache");
+    switch (to) {
+      case 0:
+        switch (from) {
+          case 1:
+            BlockService.cache_0[0].direction = BlockService.cache_1[slot].direction;
+            BlockService.cache_0[0].data = BlockService.cache_1[slot].data;
+            BlockService.cache_0[0].state = "sha";
+            BlockService.cache_1[0].state = "sha";
+            break;
+          case 2:
+            BlockService.cache_0[0].direction = BlockService.cache_2[slot].direction;
+            BlockService.cache_0[0].data = BlockService.cache_2[slot].data;
+            BlockService.cache_0[0].state = "sha";
+            BlockService.cache_2[0].state = "sha";
+            break;
+          case 3:
+            BlockService.cache_0[0].direction = BlockService.cache_3[slot].direction;
+            BlockService.cache_0[0].data = BlockService.cache_3[slot].data;
+            BlockService.cache_0[0].state = "sha";
+            BlockService.cache_3[0].state = "sha";
+            break;
+          default:
+            break;
+        }
+        break;
+      case 1:
+        switch (from) {
+          case 0:
+            BlockService.cache_1[0].direction = BlockService.cache_0[slot].direction;
+            BlockService.cache_1[0].data = BlockService.cache_0[slot].data;
+            BlockService.cache_1[0].state = "sha";
+            BlockService.cache_0[0].state = "sha";
+            break;
+          case 2:
+            BlockService.cache_1[0].direction = BlockService.cache_2[slot].direction;
+            BlockService.cache_1[0].data = BlockService.cache_2[slot].data;
+            BlockService.cache_1[0].state = "sha";
+            BlockService.cache_2[0].state = "sha";
+            break;
+          case 3:
+            BlockService.cache_1[0].direction = BlockService.cache_3[slot].direction;
+            BlockService.cache_1[0].data = BlockService.cache_3[slot].data;
+            BlockService.cache_1[0].state = "sha";
+            BlockService.cache_3[0].state = "sha";
+            break;
+          default:
+            break;
+        }
+        break;
+      case 2:
+        switch (from) {
+          case 0:
+            BlockService.cache_2[0].direction = BlockService.cache_0[slot].direction;
+            BlockService.cache_2[0].data = BlockService.cache_0[slot].data;
+            BlockService.cache_2[0].state = "sha";
+            BlockService.cache_0[0].state = "sha";
+            break;
+          case 1:
+            BlockService.cache_2[0].direction = BlockService.cache_1[slot].direction;
+            BlockService.cache_2[0].data = BlockService.cache_1[slot].data;
+            BlockService.cache_2[0].state = "sha";
+            BlockService.cache_1[0].state = "sha";
+            break;
+          case 3:
+            BlockService.cache_2[0].direction = BlockService.cache_3[slot].direction;
+            BlockService.cache_2[0].data = BlockService.cache_3[slot].data;
+            BlockService.cache_2[0].state = "sha";
+            BlockService.cache_3[0].state = "sha";
+            break;
+          default:
+            break;
+        }
+        break;
+      case 3:
+        switch (from) {
+          case 0:
+            BlockService.cache_3[0].direction = BlockService.cache_0[slot].direction;
+            BlockService.cache_3[0].data = BlockService.cache_0[slot].data;
+            BlockService.cache_3[0].state = "sha";
+            BlockService.cache_0[0].state = "sha";
+            break;
+          case 1:
+            BlockService.cache_3[0].direction = BlockService.cache_1[slot].direction;
+            BlockService.cache_3[0].data = BlockService.cache_1[slot].data;
+            BlockService.cache_3[0].state = "sha";
+            BlockService.cache_1[0].state = "sha";
+            break;
+          case 2:
+            BlockService.cache_3[0].direction = BlockService.cache_2[slot].direction;
+            BlockService.cache_3[0].data = BlockService.cache_2[slot].data;
+            BlockService.cache_3[0].state = "sha";
+            BlockService.cache_2[0].state = "sha";
+            break;
+          default:
+            break;
+        }
         break;
       default:
         break;

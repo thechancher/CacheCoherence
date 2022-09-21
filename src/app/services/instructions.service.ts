@@ -12,6 +12,10 @@ import { SizesService } from './sizes.service';
 })
 export class InstructionsService {
 
+  private isHere: boolean = false
+  private cache: number[] = []
+  private slot: number[] = []
+
   constructor(
     public clockService: ClockService,
     public cpuService: CpuService,
@@ -119,7 +123,7 @@ export class InstructionsService {
 
   public generateInstructions_manual(cpu: number, ope: string, dir: string, dat: string): void {
     this.scrollData()
-    
+
     switch (ope) {
       case "calc":
         console.log("calc");
@@ -253,10 +257,71 @@ export class InstructionsService {
       // console.log("dir bin: " + operation.direction);
       // console.log("dir: " + parseInt(operation.direction));
       BlockService.blocks_memory[parseInt(operation.direction, 2)].data = operation.data
+      console.log("----------");
 
     } else if (operation.operation == "read") {
       console.log("reading from memory");
-      this.cacheService.write(cpu, operation.direction)
+      if (this.checkInCache(operation.direction)) {
+        for (let i = 0; i < this.cache.length; i++) {
+          this.cacheService.writeFromCache(this.cache[i], this.slot[i], cpu)
+        }
+        this.cache = []
+        this.slot = []
+        this.isHere = false
+      } else
+        this.cacheService.writeFromMemory(cpu, operation.direction)
+      console.log("----------");
+    } else {
+      console.log("calculating");
+      console.log("----------");
     }
+  }
+
+  public checkInCache(dir: string): boolean {
+    // var isHere: boolean = false
+    // var cache: number[] = []
+    // var slot: number[] = []
+
+    for (let i = 0; i < this.clockService.cache_size; i++) {
+      if (BlockService.cache_0[i].direction == dir) {
+        this.cache.push(0);
+        this.slot.push(i);
+        this.isHere = true;
+        break;
+      }
+    }
+
+    for (let i = 0; i < this.clockService.cache_size; i++) {
+      if (BlockService.cache_1[i].direction == dir) {
+        this.cache.push(1);
+        this.slot.push(i);
+        this.isHere = true;
+        break;
+      }
+    }
+
+    for (let i = 0; i < this.clockService.cache_size; i++) {
+      if (BlockService.cache_2[i].direction == dir) {
+        this.cache.push(2);
+        this.slot.push(i);
+        this.isHere = true;
+        break;
+      }
+    }
+
+    for (let i = 0; i < this.clockService.cache_size; i++) {
+      if (BlockService.cache_3[i].direction == dir) {
+        this.cache.push(3);
+        this.slot.push(i);
+        this.isHere = true;
+        break;
+      }
+    }
+
+    if (this.isHere) {
+      console.log("is in cache: " + this.cache + " slot: " + this.slot);
+    }
+
+    return this.isHere
   }
 }
