@@ -3,6 +3,16 @@
     src: url("./assets/fonts/CONSOLA.TTF") format("truetype");
 }
 
+@font-face {
+    font-family: "PLAYBILL";
+    src: url("./assets/fonts/PLAYBILL.ttf") format("truetype");
+}
+
+#playbill {
+    font-family: 'PLAYBILL';
+    font-size: 4.5em;
+}
+
 #console {
     font-family: 'CONSOLA';
 }

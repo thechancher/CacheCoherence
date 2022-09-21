@@ -1,13 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { CacheSlot } from '../models/cache-slot';
-import { MemSlot } from '../models/mem-slot';
-import { Operation, operationx } from '../models/operation';
 import { BlockService } from './block.service';
-import { CacheService } from './cache.service';
-import { CpuService } from './cpu.service';
-import { MemoryService } from './memory.service';
-import { SizesService } from './sizes.service';
 
 @Injectable({
   providedIn: 'root'
@@ -76,12 +69,7 @@ export class ClockService extends BlockService {
   /**
    * generate a random operation
    */
-  private generateTick(): void {
-    // for (let i = 0; i < ClockService.CPUs; i++) {
-    //   var n = Math.floor(Math.random() * (ClockService.max - ClockService.min + 1)) + ClockService.min;
-    //   this.randomOperation[i] = n;
-    // }
-    // console.log(this.randomOperation);
+  public generateTick(): void {
     this.clock.next();
   }
 

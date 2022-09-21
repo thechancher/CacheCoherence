@@ -18,28 +18,28 @@ export class CpuService {
     // }
 
     BlockService.cpu_0 = [
-      { operation: "ope_0", direction: "dir", data: "dat" },
-      { operation: "ope_0", direction: "dir", data: "dat" },
-      { operation: "ope_0", direction: "dir", data: "dat" },
-      { operation: "ope_0", direction: "dir", data: "dat" }
+      { operation: ".", direction: "000", data: "0000" },
+      { operation: ".", direction: "000", data: "0000" },
+      { operation: ".", direction: "000", data: "0000" },
+      { operation: ".", direction: "000", data: "0000" }
     ];
     BlockService.cpu_1 = [
-      { operation: "ope_1", direction: "dir", data: "dat" },
-      { operation: "ope_1", direction: "dir", data: "dat" },
-      { operation: "ope_1", direction: "dir", data: "dat" },
-      { operation: "ope_1", direction: "dir", data: "dat" }
+      { operation: ".", direction: "000", data: "0000" },
+      { operation: ".", direction: "000", data: "0000" },
+      { operation: ".", direction: "000", data: "0000" },
+      { operation: ".", direction: "000", data: "0000" }
     ];
     BlockService.cpu_2 = [
-      { operation: "ope_2", direction: "dir", data: "dat" },
-      { operation: "ope_2", direction: "dir", data: "dat" },
-      { operation: "ope_2", direction: "dir", data: "dat" },
-      { operation: "ope_2", direction: "dir", data: "dat" }
+      { operation: ".", direction: "000", data: "0000" },
+      { operation: ".", direction: "000", data: "0000" },
+      { operation: ".", direction: "000", data: "0000" },
+      { operation: ".", direction: "000", data: "0000" }
     ];
     BlockService.cpu_3 = [
-      { operation: "ope_3", direction: "dir", data: "dat" },
-      { operation: "ope_3", direction: "dir", data: "dat" },
-      { operation: "ope_3", direction: "dir", data: "dat" },
-      { operation: "ope_3", direction: "dir", data: "dat" }
+      { operation: ".", direction: "000", data: "0000" },
+      { operation: ".", direction: "000", data: "0000" },
+      { operation: ".", direction: "000", data: "0000" },
+      { operation: ".", direction: "000", data: "0000" }
     ];
   }
 

@@ -8,7 +8,7 @@ import { ClockService } from 'src/app/services/clock.service';
 })
 export class ClockComponent implements OnInit {
 
-  constructor(public clock: ClockService) {
+  constructor(public clockService: ClockService) {
   }
 
   ngOnInit(): void {
@@ -18,14 +18,29 @@ export class ClockComponent implements OnInit {
    * toggle the running state
    */
   public togglePlay(): void {
-    this.clock.play_pause_btn();
+    this.clockService.play_pause_btn();
   }
 
   /**
    * change the running speed
    */
-  public speed(): void {
-    this.clock.changeSpeed(this.clock.period / 2);
+  public speedUp(): void {
+    this.clockService.changeSpeed(this.clockService.period / 2);
+  }
+
+  /**
+   * change the running speed
+   */
+  public speedDown(): void {
+    this.clockService.changeSpeed(this.clockService.period * 2);
+  }
+
+  /**
+   * step in
+   */
+  public stepIn(): void {
+    this.clockService.generateTick();
+
   }
 
 }
