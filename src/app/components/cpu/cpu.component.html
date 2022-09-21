@@ -15,7 +15,8 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item" *ngFor="let operation of operations; last as isLast">
+        <li class="list-group-item"
+            *ngFor="let operation of operations; last as isLast">
             <div class="row">
                 <div class="col-4">
                     <div *ngIf="!operation">
@@ -53,6 +54,6 @@
             </div>
         </li>
     </ul>
-
-    <app-cache></app-cache>
+    <hr>
+    <app-cache [CPU]="CPU"></app-cache>
 </div>

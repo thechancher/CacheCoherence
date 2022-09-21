@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Operation, operations } from 'src/app/models/operation';
-import { ClockService } from 'src/app/services/clock.service';
+import { Operation } from 'src/app/models/operation';
+import { BlockService } from 'src/app/services/block.service';
+import { InstructionsService } from 'src/app/services/instructions.service';
 
 @Component({
   selector: 'app-cpu',
@@ -11,19 +12,28 @@ export class CPUComponent implements OnInit {
 
   @Input() CPU!: number; // CPU id
 
-  public operations: Operation[] = new Array<Operation>(this.clockService.instructions_history);
+  public operations!: Operation[]
 
-  constructor(private clockService: ClockService) { }
+  constructor(public instructionService: InstructionsService) { }
 
   ngOnInit(): void {
-    this.clockService.getRandom$().subscribe((random: number[]) => {
-      console.log(operations[random[this.CPU]].operation);
-
-      for (let i = 1; i < this.operations.length; i++) {
-        this.operations[i - 1] = this.operations[i];
-      }
-
-      this.operations[this.clockService.instructions_history - 1] = operations[random[this.CPU]];
-    });
+    console.log("this CPU: " + this.CPU);
+    switch (this.CPU) {
+      case 0:
+        this.operations = BlockService.cpu_0
+        break;
+      case 1:
+        this.operations = BlockService.cpu_1
+        break;
+      case 2:
+        this.operations = BlockService.cpu_2
+        break;
+      case 3:
+        this.operations = BlockService.cpu_3
+        break;
+      default:
+        break;
+    }
   }
+
 }

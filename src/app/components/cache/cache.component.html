@@ -16,29 +16,29 @@
             </div>
         </div>
     </li>
-    <li class="list-group-item" *ngFor="let slot of slots; last as isLast">
+    <li class="list-group-item" *ngFor="let block of blocks; last as isLast">
         <div class="row">
             <div class="col-3">
                 <div>
-                    <p class="m-0" id="console"><span class="">{{slot.slot}}</span></p>
+                    <p class="m-0" id="console"><span class="">{{block.slot}}</span></p>
                 </div>
             </div>
             <div class="col-3">
-                <div *ngIf="slot.state == ''">
+                <div *ngIf="block.state == ''">
                     <p class="m-0" id="console"><span class="">...</span></p>
                 </div>
-                <div *ngIf="slot.state">
-                    <p class="m-0" id="console"><span class="">{{slot.state}}</span></p>
+                <div *ngIf="block.state">
+                    <p class="m-0" id="console"><span class="">{{block.state}}</span></p>
                 </div>
             </div>
             <div class="col-3">
                 <div>
-                    <p class="m-0" id="console"><span class="">{{slot.direction}}</span></p>
+                    <p class="m-0" id="console"><span class="">{{block.direction}}</span></p>
                 </div>
             </div>
             <div class="col-3">
                 <div>
-                    <p class="m-0" id="console"><span class="">{{slot.data}}</span></p>
+                    <p class="m-0" id="console"><span class="">{{block.data}}</span></p>
                 </div>
             </div>
         </div>

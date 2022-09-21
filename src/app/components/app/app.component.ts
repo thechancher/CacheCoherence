@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ClockService } from 'src/app/services/clock.service';
+import { SizesService } from 'src/app/services/sizes.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,9 @@ import { ClockService } from 'src/app/services/clock.service';
 export class AppComponent {
   title = 'Cache Coherence Simulator v1.0';
 
-  constructor(public clock: ClockService) { }
+  public cpus: number[] = new Array(SizesService.CPUs);
+
+  constructor() { }
 
   /**
    * used to build an array for the loop

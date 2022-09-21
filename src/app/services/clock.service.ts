@@ -1,10 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, TimeoutConfig } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { CacheSlot } from '../models/cache-slot';
+import { MemSlot } from '../models/mem-slot';
+import { Operation, operationx } from '../models/operation';
+import { BlockService } from './block.service';
+import { CacheService } from './cache.service';
+import { CpuService } from './cpu.service';
+import { MemoryService } from './memory.service';
+import { SizesService } from './sizes.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClockService {
+export class ClockService extends BlockService {
 
   private interval!: ReturnType<typeof setInterval>;
 
@@ -12,23 +20,12 @@ export class ClockService {
   public state?: string = "tic";
   public tictac?: boolean = false;
   public action_btn?: string = "Play";
-  public period: number = 2000;
 
-  public CPUs: number = 4;
-  public randomOperation: number[] = new Array<number>(this.CPUs);
-  private randomOperation$: Subject<number[]> = new Subject();;
+  private clock: Subject<void> = new Subject();;
 
-  public instructions_history: number = 4;
-
-  public cache_size: number = 4;
-  public mem_size: number = 8;
-
-  public data_size: number = 16;
-
-  private static min: number = 0;
-  private static max: number = 2;
-
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   /**
    * this always build the interval
@@ -44,7 +41,7 @@ export class ClockService {
       }
       else {
         this.state = "tac";
-        this.generateRandom();
+        this.generateTick();
         console.log("tac");
         console.log("");
       }
@@ -79,20 +76,21 @@ export class ClockService {
   /**
    * generate a random operation
    */
-  private generateRandom(): void {
-    for (let i = 0; i < this.CPUs; i++) {
-      var n = Math.floor(Math.random() * (ClockService.max - ClockService.min + 1)) + ClockService.min;
-      this.randomOperation[i] = n;
-    }
-    console.log(this.randomOperation);
-    this.randomOperation$.next(this.randomOperation);
+  private generateTick(): void {
+    // for (let i = 0; i < ClockService.CPUs; i++) {
+    //   var n = Math.floor(Math.random() * (ClockService.max - ClockService.min + 1)) + ClockService.min;
+    //   this.randomOperation[i] = n;
+    // }
+    // console.log(this.randomOperation);
+    this.clock.next();
   }
 
   /**
    * 
    * @returns the random observable
    */
-  public getRandom$(): Observable<number[]> {
-    return this.randomOperation$.asObservable();
+  public getClock$(): Observable<void> {
+    return this.clock.asObservable();
   }
+
 }

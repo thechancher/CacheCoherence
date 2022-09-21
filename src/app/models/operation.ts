@@ -1,11 +1,17 @@
 export interface Operation {
     operation: string,
+    // direction_number: number,
     direction: string,
     data: string
 }
 
-export var operations: Operation[] = [
+// export interface CPU_data {
+//     CPU: number,
+//     operations: Operation[]
+// }
+
+export var operationx: Operation[] = [
     { operation: "calc", data: "", direction: "" },
-    { operation: "read", data: "wxyz", direction: "1111" },
-    { operation: "write", data: "abcd", direction: "0000" }
+    { operation: "read", data: "wxyz", direction: "666" },
+    { operation: "write", data: "mnop", direction: "999" }
 ];

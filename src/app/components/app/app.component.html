@@ -10,7 +10,7 @@
 
         <div class="mx-3" id="cpus">
             <div class="row align-items-center">
-                <div class="col-md-3 p-1" *ngFor="let cpu of counter(clock.CPUs); let i = index">
+                <div class="col-md-3 p-1" *ngFor="let cpu of cpus; let i = index">
                     <app-cpu [CPU]="i"></app-cpu>
                 </div>
             </div>
