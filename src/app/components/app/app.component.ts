@@ -8,6 +8,7 @@ import { SizesService } from 'src/app/services/sizes.service';
 })
 export class AppComponent {
   title = 'Cache Coherence Simulator v1.0';
+  year = (new Date()).getFullYear()
 
   public cpus: number[] = new Array(SizesService.CPUs);
 
