@@ -17,7 +17,7 @@ export class CPUComponent implements OnInit {
   constructor(public instructionService: InstructionsService) { }
 
   ngOnInit(): void {
-    console.log("this CPU: " + this.CPU);
+    // console.log("this CPU: " + this.CPU);
     switch (this.CPU) {
       case 0:
         this.operations = BlockService.cpu_0

@@ -69,7 +69,7 @@ export class CacheService {
 
     // }
 
-    console.log("build slots");
+    // console.log("build slots");
     // console.log("blocks: " + JSON.stringify(this.blockService.blocks_cache));
   }
 

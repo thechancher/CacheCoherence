@@ -14,7 +14,9 @@ export class ClockService extends BlockService {
   public tictac?: boolean = false;
   public action_btn?: string = "Play";
 
-  private clock: Subject<void> = new Subject();;
+  private clock: Subject<void> = new Subject();
+
+  public fromControl: boolean = false;
 
   constructor() {
     super();

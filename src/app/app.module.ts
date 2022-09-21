@@ -12,6 +12,7 @@ import { ClockService } from './services/clock.service';
 import { CPUComponent } from './components/cpu/cpu.component';
 import { MemoryComponent } from './components/memory/memory.component';
 import { CacheComponent } from './components/cache/cache.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CacheComponent } from './components/cache/cache.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [ClockService],
   bootstrap: [AppComponent]

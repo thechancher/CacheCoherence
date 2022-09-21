@@ -10,13 +10,13 @@
 
         <div class="mx-3" id="cpus">
             <div class="row align-items-center">
-                <div class="col-md-3 col-lg-2 p-1" *ngFor="let cpu of cpus; let i = index">
+                <div class="col-sm-4 col-md-3 col-lg-2 p-1" *ngFor="let cpu of cpus; let i = index">
                     <app-cpu [CPU]="i"></app-cpu>
                 </div>
-                <div class="col-md-3 col-lg-2 p-1">
+                <div class="col-sm-4 col-md-3 col-lg-2 p-1">
                     <app-memory></app-memory>
                 </div>
-                <div class="col-md-3 col-lg-2 p-1">
+                <div class="col-sm-4 col-md-3 col-lg-2 p-1">
                     <app-clock></app-clock>
                 </div>
             </div>

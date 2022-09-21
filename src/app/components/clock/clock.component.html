@@ -1,28 +1,31 @@
 <div class="border border-secondary rounded-4">
     <h6 class="border border-secondary rounded-4 bg-secondary m-1 text-center">Control</h6>
-    <h5 class="ms-2">Clock</h5>
     <h6 class="ms-2">Period: {{clockService.period*2}} ns [{{clockService.state}}]</h6>
     <button (click)="togglePlay()" class="btn btn-sm ms-2 mb-2"
         [ngClass]="clockService.play?'btn-secondary' : 'btn-primary'">{{clockService.action_btn}}</button>
     <button (click)="speedUp()" [disabled]="clockService.play" class="btn btn-secondary btn-sm mb-2 ms-2">Speed up</button>
     <button (click)="speedDown()" [disabled]="clockService.play" class="btn btn-secondary btn-sm mb-2 ms-2">Speed down</button>
     <button (click)="stepIn()" [disabled]="clockService.play" class="btn btn-primary btn-sm mb-2 ms-2">Step in</button>
-    <hr>
+    <hr class="mt-1 pb-1">
     <form class="row g-3 mx-1 mb-2">
-        <div class="col-auto input-group">
+        <div class="col-auto input-group my-1">
             <span class="input-group-text" id="basic-addon1"><small>CPU</small></span>
-            <input type="number" class="form-control form-control-sm" id="cpu">
+            <input type="number" class="form-control form-control-sm" id="cpu" [(ngModel)]="cpu" name="cpu" min="0" max="3">
         </div>
-        <div class="col-auto input-group">
+        <div class="col-auto input-group my-1">
+            <span class="input-group-text" id="basic-addon1"><small>Operation</small></span>
+            <input type="text" class="form-control form-control-sm" id="ope" [(ngModel)]="ope" name="ope">
+        </div>
+        <div class="col-auto input-group my-1">
             <span class="input-group-text" id="basic-addon1"><small>Direction</small></span>
-            <input type="text" class="form-control form-control-sm" id="dir">
+            <input type="text" class="form-control form-control-sm" id="dir" [(ngModel)]="dir" name="dir">
         </div>
-        <div class="col-auto input-group">
+        <div class="col-auto input-group my-1">
             <span class="input-group-text" id="basic-addon1"><small>Data</small></span>
-            <input type="text" class="form-control form-control-sm" id="dat">
+            <input type="text" class="form-control form-control-sm" id="dat" [(ngModel)]="dat" name="dat">
         </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-primary btn-sm mb-3" [disabled]="clockService.play">Send</button>
+        <div class="col-auto my-0">
+            <button type="submit" class="btn btn-primary btn-sm mb-3" [disabled]="clockService.play" (click)="sendInstruction()">Send</button>
         </div>
     </form>
 </div>

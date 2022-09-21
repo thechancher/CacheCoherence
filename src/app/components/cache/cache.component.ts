@@ -17,7 +17,7 @@ export class CacheComponent implements OnInit {
   constructor(public cacheService: CacheService) { }
 
   ngOnInit(): void {
-    console.log("this CPU: " + this.CPU);
+    // console.log("this CPU: " + this.CPU);
     switch (this.CPU) {
       case 0:
         this.blocks = BlockService.cache_0
